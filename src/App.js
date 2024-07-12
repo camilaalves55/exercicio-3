@@ -1,25 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import CalculoFatorial from './components/CalculoFatorial';
+import './style.css';
 
-function App() {
+const App = () => {
+  const [numero, setNumero] = useState(0);
+
+  const handleChange = (event) => {
+    setNumero(parseInt(event.target.value, 10) || 0);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <header className="App-header">
+      <div className="app">
+      <h1>Calculadora de Fatorial</h1>
+      <input type="number" value={numero} onChange={handleChange} min="0"/>
+      <CalculoFatorial numero={numero} />
+      </div>
+    </header>
   );
-}
+};
 
 export default App;
+
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//       </header>
+//     </div>
+//   );
+// }
+
+// export default App;
